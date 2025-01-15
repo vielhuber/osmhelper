@@ -1,6 +1,6 @@
 # 🗺️ osmhelper 🗺️
 
-osmhelper creates vector tiles from .osm.pbf files with bounding boxes and creates boilerplate files for static hosting.
+osmhelper helps you with hosting openstreetmap statically. it creates vector tiles from .osm.pbf files with defined bounding boxes and creates suitable boilerplate files.
 
 # installation
 
@@ -43,7 +43,7 @@ rm -rf ./tilemaker
 exec env -i HOME=$HOME bash -l
 tilemaker --help
 
-## script
+## conversion script
 mkdir openstreetmap
 cd openstreetmap
 wget -O ./convert.sh https://raw.githubusercontent.com/vielhuber/osmhelper/refs/heads/master/convert.sh
