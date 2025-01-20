@@ -6,6 +6,5 @@
     "trailingCommaPHP": false,
     "arrowParens": "avoid",
     "phpVersion": "8.2",
-    "plugins": ["@prettier/plugin-php"]
+    "plugins": ["@prettier/plugin-php", "prettier-plugin-sh"]
 }
-

@@ -1,3 +1,5 @@
 /tiles/
+/tilemaker/
 /node_modules/
 package-lock.json
+*.osm.pbf
