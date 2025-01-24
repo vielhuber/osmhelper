@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
         # --compress
         --compress)
             COMPRESS=1
-        ;;
+            ;;
         *)
             echo "unknown option '$key'"
             ;;
@@ -76,7 +76,7 @@ git clone https://github.com/systemed/tilemaker.git
 
 # if compression is disabled, modify config (compression reduces filesize by ~60%)
 if [ "$COMPRESS" -eq 0 ]; then
-    sed -i -E 's|"compress": "(.+)"|"compress": "none"|' ./tilemaker/resources/config-openmaptiles.json ## modify config
+    sed -i -E 's|"compress": "(.+)"|"compress": "none"|' ./tilemaker/resources/config-openmaptiles.json
 fi
 
 # osm.pbf => pbf
