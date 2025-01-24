@@ -1,0 +1,5 @@
+SetEnvIf Request_URI "^/tiles/fonts/.*\.pbf$" exclude_pbf
+<FilesMatch "\.pbf$">
+    Header set Content-Type "application/vnd.mapbox-vector-tile" env=!exclude_pbf
+    Header set Content-Encoding "gzip" env=!exclude_pbf
+</FilesMatch>

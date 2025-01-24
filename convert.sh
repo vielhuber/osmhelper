@@ -6,6 +6,7 @@ LAT_MIN=0
 LON_MIN=0
 LAT_MAX=0
 LON_MAX=0
+COMPRESS=0
 while [[ $# -gt 0 ]]; do
     key="$1"
     case "$key" in
@@ -34,6 +35,10 @@ while [[ $# -gt 0 ]]; do
             shift
             LON_MAX="$1"
             ;;
+        # --compress
+        --compress)
+            COMPRESS=1
+        ;;
         *)
             echo "unknown option '$key'"
             ;;
@@ -68,7 +73,11 @@ osmium extract --strategy=complete_ways --overwrite --bbox="$LON_MIN","$LAT_MIN"
 
 # prepare tilemaker config + files
 git clone https://github.com/systemed/tilemaker.git
-sed -i -E 's|"compress": "(.+)"|"compress": "none"|' ./tilemaker/resources/config-openmaptiles.json ## modify config
+
+# if compression is disabled, modify config (compression reduces filesize by ~60%)
+if [ "$COMPRESS" -eq 0 ]; then
+    sed -i -E 's|"compress": "(.+)"|"compress": "none"|' ./tilemaker/resources/config-openmaptiles.json ## modify config
+fi
 
 # osm.pbf => pbf
 rm -rf ./tiles/
@@ -85,6 +94,11 @@ sed -i -E 's/LAT_MIN: ([0-9]|\.)+/LAT_MIN: '"$LAT_MIN"'/' ./index.html
 sed -i -E 's/LON_MIN: ([0-9]|\.)+/LON_MIN: '"$LON_MIN"'/' ./index.html
 sed -i -E 's/LAT_MAX: ([0-9]|\.)+/LAT_MAX: '"$LAT_MAX"'/' ./index.html
 sed -i -E 's/LON_MAX: ([0-9]|\.)+/LON_MAX: '"$LON_MAX"'/' ./index.html
+if [ "$COMPRESS" -eq 1 ]; then
+    wget -O ./.htaccess https://raw.githubusercontent.com/vielhuber/osmhelper/refs/heads/main/.htaccess
+else
+    echo "" > ./.htaccess
+fi
 
 # remove work files
 rm -rf ./tilemaker/
