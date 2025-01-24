@@ -102,5 +102,5 @@ fi
 
 # remove work files
 rm -rf ./tilemaker/
-#rm -f ./input.osm.pbf
-#rm -f ./raw.osm.pbf
+rm -f ./input.osm.pbf
+rm -f ./raw.osm.pbf
