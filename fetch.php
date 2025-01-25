@@ -1,5 +1,4 @@
 <?php
-$force = true;
 $force = false;
 
 $file = 'style.json';
@@ -12,7 +11,8 @@ if (isset($_GET['file'])) {
 
 header('Content-Type: application/json; charset=utf-8');
 
-$url = 'http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') . '://' . $_SERVER['HTTP_HOST'];
+$baseurl = rtrim('http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . 
+            dirname($_SERVER['PHP_SELF']), '/');
 
 if ($file === 'style.json') {
     if ($force === true || !file_exists('./tiles/style.json')) {
@@ -134,25 +134,25 @@ if ($file === 'style.json') {
     $content = file_get_contents('./tiles/' . $file);
     $content = preg_replace(
         '/"url": "(.+)\.json(.*)"/',
-        '"url": "' . $url . '/fetch.php?file=metadata.json"',
+        '"url": "' . $baseurl . '/fetch.php?file=metadata.json"',
         $content
     );
     $content = preg_replace(
         '/"glyphs": "(.+)\/fonts\/\{fontstack\}\/\{range\}\.pbf(.*)"/',
-        '"glyphs": "' . $url . '/tiles/fonts/{fontstack}/{range}.pbf"',
+        '"glyphs": "' . $baseurl . '/tiles/fonts/{fontstack}/{range}.pbf"',
         $content
     );
     // concatenated fonts are not supported, since we don't have a tileserver
     $content = preg_replace('/"text-font": \[(?:\n|.)*?"(.+)"(?:\n|.)+?\],/', '"text-font": ["$1"],', $content);
 
-    $content = preg_replace('/"sprite": "(.+)\/sprite"/', '"sprite": "' . $url . '/tiles/sprite"', $content);
+    $content = preg_replace('/"sprite": "(.+)\/sprite"/', '"sprite": "' . $baseurl . '/tiles/sprite"', $content);
 }
 
 if ($file === 'metadata.json') {
     $content = file_get_contents('./tiles/' . $file);
     $content = preg_replace(
         '/"tiles":\["(.+)\/{z}\/{x}\/{y}.pbf"\]/',
-        '"tiles":["' . $url . '/tiles/{z}/{x}/{y}.pbf"]',
+        '"tiles":["' . $baseurl . '/tiles/{z}/{x}/{y}.pbf"]',
         $content
     );
 }
