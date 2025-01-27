@@ -1,5 +1,6 @@
 <?php
 $force = false;
+$custom_style = false;
 
 $file = 'style.json';
 if (isset($_GET['file'])) {
@@ -11,8 +12,14 @@ if (isset($_GET['file'])) {
 
 header('Content-Type: application/json; charset=utf-8');
 
-$baseurl = rtrim('http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . 
-            dirname($_SERVER['PHP_SELF']), '/');
+$baseurl = rtrim(
+    'http' .
+        (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') .
+        '://' .
+        $_SERVER['HTTP_HOST'] .
+        dirname($_SERVER['PHP_SELF']),
+    '/'
+);
 
 if ($file === 'style.json') {
     if ($force === true || !file_exists('./tiles/style.json')) {
@@ -77,7 +84,7 @@ if ($file === 'style.json') {
             );
         }
         // custom style from https://github.com/teamapps-org/maplibre-gl-styles/
-        if (1 === 1) {
+        if ($custom_style === true) {
             file_put_contents(
                 './tiles/style.json',
                 file_get_contents(
@@ -143,7 +150,7 @@ if ($file === 'style.json') {
         $content
     );
     // concatenated fonts are not supported, since we don't have a tileserver
-    $content = preg_replace('/"text-font": \[(?:\n|.)*?"(.+)"(?:\n|.)+?\],/', '"text-font": ["$1"],', $content);
+    $content = preg_replace('/"text-font": \[(?:\n|.)*?"(.+?)"(?:\n|.)*?\],/', '"text-font": ["$1"],', $content);
 
     $content = preg_replace('/"sprite": "(.+)\/sprite"/', '"sprite": "' . $baseurl . '/tiles/sprite"', $content);
 }
