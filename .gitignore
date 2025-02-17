@@ -1,5 +1,10 @@
 /tiles/
 /tilemaker/
+/coastline/
+/landcover/
 /node_modules/
 package-lock.json
 *.osm.pbf
+/tiles.zip
+/vendor/
+/composer.lock

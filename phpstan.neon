@@ -1,0 +1,9 @@
+parameters:
+
+    paths:
+        - ./
+
+    excludePaths:
+        - ~/.vscode-server/*
+
+    level: 3

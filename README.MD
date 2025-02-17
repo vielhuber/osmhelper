@@ -58,6 +58,6 @@ chmod +x convert.sh
     --lat-min 47.27 \
     --lon-min 8.97 \
     --lat-max 50.57 \
-    --lon-max 13.84
+    --lon-max 13.84 \
     --compress
 ```

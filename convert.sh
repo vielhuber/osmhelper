@@ -74,6 +74,10 @@ osmium extract --strategy=complete_ways --overwrite --bbox="$LON_MIN","$LAT_MIN"
 # prepare tilemaker config + files
 git clone https://github.com/systemed/tilemaker.git
 
+# get coastline / landcover files
+./tilemaker/get-coastline.sh
+./tilemaker/get-landcover.sh
+
 # if compression is disabled, modify config (compression reduces filesize by ~60%)
 if [ "$COMPRESS" -eq 0 ]; then
     sed -i -E 's|"compress": "(.+)"|"compress": "none"|' ./tilemaker/resources/config-openmaptiles.json
@@ -102,5 +106,7 @@ fi
 
 # remove work files
 rm -rf ./tilemaker/
+rm -rf ./coastline/
+rm -rf ./landcover/
 rm -f ./input.osm.pbf
 rm -f ./raw.osm.pbf
