@@ -20,7 +20,7 @@ make
 make install
 cd ..
 cd ..
-rm -rf ./osmium/
+rm -rf ./osmium
 exec env -i HOME=$HOME bash -l
 osmium --version
 ```
@@ -32,7 +32,7 @@ git clone https://github.com/mapbox/mbutil.git
 cd mbutil
 python setup.py install
 cd ..
-rm -rf ./mbutil/
+rm -rf ./mbutil
 exec env -i HOME=$HOME bash -l
 mb-util --version
 ```
