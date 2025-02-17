@@ -1,6 +1,6 @@
 # 🗺️ osmhelper 🗺️
 
-osmhelper helps you with hosting openstreetmap statically. it creates vector tiles from .osm.pbf files with defined bounding boxes and creates suitable boilerplate files.
+osmhelper helps you hosting openstreetmap statically. it creates vector tiles from `.osm.pbf` files with user defined bounding boxes and creates suitable boilerplate files you just need to upload and are ready to go.
 
 # installation
 
