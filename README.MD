@@ -2,10 +2,11 @@
 
 osmhelper helps you hosting openstreetmap statically. it creates vector tiles from `.osm.pbf` files with user defined bounding boxes and creates suitable boilerplate files you just need to upload and are ready to go.
 
-# installation
+## installation
+
+### osmium
 
 ```sh
-## osmium
 mkdir osmium
 cd osmium
 wget https://github.com/osmcode/osmium-tool/archive/refs/tags/v1.16.0.tar.gz
@@ -22,8 +23,11 @@ cd ..
 rm -rf ./osmium/
 exec env -i HOME=$HOME bash -l
 osmium --version
+```
 
-## mbutil
+### mbutil
+
+```sh
 git clone https://github.com/mapbox/mbutil.git
 cd mbutil
 python setup.py install
@@ -31,8 +35,11 @@ cd ..
 rm -rf ./mbutil/
 exec env -i HOME=$HOME bash -l
 mb-util --version
+```
 
-## tilemaker
+### tilemaker
+
+```sh
 apt install build-essential libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev lua5.1 liblua5.1-0-dev libshp-dev libsqlite3-dev rapidjson-dev
 git clone https://github.com/systemed/tilemaker.git
 cd tilemaker
@@ -42,15 +49,18 @@ cd ..
 rm -rf ./tilemaker
 exec env -i HOME=$HOME bash -l
 tilemaker --help
+```
 
-## conversion script
+### conversion script
+
+```sh
 mkdir openstreetmap
 cd openstreetmap
 wget -O ./convert.sh https://raw.githubusercontent.com/vielhuber/osmhelper/refs/heads/master/convert.sh
 chmod +x convert.sh
 ```
 
-# usage
+## usage
 
 ```sh
 ./convert.sh \
