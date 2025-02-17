@@ -4,7 +4,7 @@ osmhelper helps you hosting openstreetmap statically. it creates vector tiles fr
 
 ## installation
 
-### osmium
+#### osmium
 
 ```sh
 mkdir osmium
@@ -25,7 +25,7 @@ exec env -i HOME=$HOME bash -l
 osmium --version
 ```
 
-### mbutil
+#### mbutil
 
 ```sh
 git clone https://github.com/mapbox/mbutil.git
@@ -37,7 +37,7 @@ exec env -i HOME=$HOME bash -l
 mb-util --version
 ```
 
-### tilemaker
+#### tilemaker
 
 ```sh
 apt install build-essential libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev lua5.1 liblua5.1-0-dev libshp-dev libsqlite3-dev rapidjson-dev
@@ -51,7 +51,7 @@ exec env -i HOME=$HOME bash -l
 tilemaker --help
 ```
 
-### conversion script
+#### conversion script
 
 ```sh
 mkdir openstreetmap
