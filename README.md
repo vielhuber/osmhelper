@@ -1,3 +1,8 @@
+[![GitHub Tag](https://img.shields.io/github/v/tag/vielhuber/osmhelper)](https://github.com/vielhuber/osmhelper/tags)
+[![Code Style](https://img.shields.io/badge/code_style-psr--12-ff69b4.svg)](https://www.php-fig.org/psr/psr-12/)
+[![License](https://img.shields.io/github/license/vielhuber/osmhelper)](https://github.com/vielhuber/osmhelper/blob/main/LICENSE.md)
+[![Last Commit](https://img.shields.io/github/last-commit/vielhuber/osmhelper)](https://github.com/vielhuber/osmhelper/commits)
+
 # 🗺️ osmhelper 🗺️
 
 osmhelper helps you hosting openstreetmap statically. it creates vector tiles from `.osm.pbf` files with user defined bounding boxes and creates suitable boilerplate files you just need to upload and are ready to go.
